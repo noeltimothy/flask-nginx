@@ -52,7 +52,7 @@ User=ubuntu
 Group=www-data
 RuntimeDirectory=gunicorn
 WorkingDirectory=/home/ubuntu/<your-flask-app-dir>
-ExecStart=sudo /usr/local/bin/gunicorn --bind 0.0.0.0:80 --workers=4 app:app --log-file gunicorn.log --capture-output --log-level debug --reload
+ExecStart=/usr/bin/sudo /usr/local/bin/gunicorn --bind 0.0.0.0:80 --workers=4 app:app --log-file gunicorn.log --capture-output --log-level debug --reload
 ExecReload=/bin/kill -s HUP $MAINPID
 ExecStop=/bin/kill -s TERM $MAINPID
 
