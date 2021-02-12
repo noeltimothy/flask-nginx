@@ -28,6 +28,7 @@ sudo nohup python app.py > /var/log/app.log 2>&1 &
 ### Option 2
 
 *flask with Gunicorn*
+
 You can expose your Flask app to the outside world using a WSGI server such as Gunicorn
 
 - Flask runs on localhost and port 5000 by default
