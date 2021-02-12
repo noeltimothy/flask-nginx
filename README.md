@@ -60,4 +60,10 @@ ExecStop=/bin/kill -s TERM $MAINPID
 WantedBy=multi-user.target
 ```
 
+Copy the Service file to /etc/systemd/system
+
+```
+sudo cp gunicorn.service /etc/systemd/system/
+```
+
 ### Option 3
