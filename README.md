@@ -1,4 +1,4 @@
-# Production ready Flask with Nginx
+# Production ready Flask
 
 ## Simple Flask App
 
@@ -66,5 +66,15 @@ Copy the Service file to /etc/systemd/system and start it
 sudo cp gunicorn.service /etc/systemd/system/
 sudo service gunicorn restart
 ```
+
+*Pain points*
+
+- Make sure your flask app.run() only happens under
+```
+if __name__ == '__main__':
+    app.run()
+```
+
+- Make sure your gunicorn.service file runs Gunicorn using sudo since we need access to port 80
 
 ### Option 3
