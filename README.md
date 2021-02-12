@@ -52,7 +52,7 @@ User=ubuntu
 Group=www-data
 RuntimeDirectory=gunicorn
 WorkingDirectory=/home/ubuntu/<your-flask-app-dir>
-ExecStart=/usr/local/bin/gunicorn --bind 0.0.0.0:80 --workers=4 <your-flask-app-dir>.app:app --log-file gunicorn.log --capture-output --log-level debug --reload
+ExecStart=sudo /usr/local/bin/gunicorn --bind 0.0.0.0:80 --workers=4 app:app --log-file gunicorn.log --capture-output --log-level debug --reload
 ExecReload=/bin/kill -s HUP $MAINPID
 ExecStop=/bin/kill -s TERM $MAINPID
 
@@ -60,10 +60,11 @@ ExecStop=/bin/kill -s TERM $MAINPID
 WantedBy=multi-user.target
 ```
 
-Copy the Service file to /etc/systemd/system
+Copy the Service file to /etc/systemd/system and start it
 
 ```
 sudo cp gunicorn.service /etc/systemd/system/
+sudo service gunicorn restart
 ```
 
 ### Option 3
