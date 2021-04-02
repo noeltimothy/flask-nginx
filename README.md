@@ -69,9 +69,15 @@ sudo service gunicorn restart
 
 *Pain points*
 
-- Make sure your flask app.run() only happens under
+- Make sure your flask app.run() only happens under main in your app.py
+- Remember to not have debug=True or else warnings of not being production ready will appear in gunicorn.log
+- Use gunicorn.log as your logging mechanism via "logging.getLogger('gunicorn.error')" in your app.py and also specifying the log file in gunicorn.service file as shown above.
+
 ```
 if __name__ == '__main__':
+    gunicorn_logger = logging.getLogger('gunicorn.error')
+    app.logger.handlers = gunicorn_logger.handlers
+    app.logger.setLevel(gunicorn_logger.level)
     app.run()
 ```
 
